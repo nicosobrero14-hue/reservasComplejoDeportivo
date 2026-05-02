@@ -1,0 +1,31 @@
+# ─── Base de datos ────────────────────────────────────────────
+spring.datasource.url=jdbc:mysql://localhost:3306/reservascomplejo?serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=TU_PASSWORD_MYSQL
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+
+# ─── JWT ──────────────────────────────────────────────────────
+# Generar con: python3 -c "import secrets; print(secrets.token_hex(32))"
+jwt.secret=TU_SECRET_DE_64_CARACTERES_MINIMO
+jwt.expiration=86400000
+
+# ─── Mail (Gmail) ─────────────────────────────────────────────
+# Activar "Contraseñas de aplicaciones" en myaccount.google.com
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=tuemail@gmail.com
+spring.mail.password=xxxx xxxx xxxx xxxx
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+app.frontend.url=http://localhost:5173
+
+# ─── MercadoPago ──────────────────────────────────────────────
+# Obtener en developers.mercadopago.com
+mercadopago.access-token=APP_USR-xxxxxxxxxxxx
+mercadopago.success-url=http://localhost:5173/pago-exitoso
+mercadopago.failure-url=http://localhost:5173/pago-fallido
+mercadopago.pending-url=http://localhost:5173/pago-pendiente
+# Para webhook local usar ngrok: ngrok http 8080
+mercadopago.webhook-url=https://TU-URL.ngrok-free.app
