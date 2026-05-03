@@ -29,7 +29,10 @@ import com.nsobrero.reservasTurnos.enums.EstadoPago;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "reserva", uniqueConstraints = {
-	    @UniqueConstraint(columnNames = {"turno_id", "usuario_id"})
+	    @UniqueConstraint(
+	        name = "uk_turno_usuario",
+	        columnNames = {"turno_id", "usuario_id"}
+	    )
 	})
 public class Reserva {
 	@Id
@@ -39,8 +42,8 @@ public class Reserva {
 	@ManyToOne
 	private Usuario usuario;
 	
-	@OneToOne
-	@JoinColumn(unique = true)
+	@ManyToOne
+	@JoinColumn(name = "turno_id")
 	private Turno turno;
 
 	@Column(nullable = false)
